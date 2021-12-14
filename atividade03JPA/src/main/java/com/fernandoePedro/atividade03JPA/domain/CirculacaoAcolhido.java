@@ -4,16 +4,15 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.time.LocalTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-@Entity(name = "tbCirculacaoAcolhido")
+@Entity
+@Table(name = "tbCirculacaoAcolhido")
 public class CirculacaoAcolhido {
 
     @Id
@@ -22,7 +21,10 @@ public class CirculacaoAcolhido {
     LocalTime horaSaida;
     LocalTime horaEntrada;
     String descricao;
-    // relacionamento N:1 com acolhido
     Boolean isActive;
+
+    // relacionamento N:1 com acolhido
+    @ManyToOne
+    Acolhido acolhido;
 
 }
